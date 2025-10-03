@@ -780,7 +780,6 @@ export default function MapSearchPage({ onNavigate }: MapSearchPageProps) {
               <h3 className="font-medium font-logo text-rhino">{t('map.addPlace')}</h3>
               <div className="flex-1"></div>
               <button
-                onClick={() => setShowAddPlaceForm(false)}
                 onClick={handleCloseAddPlaceForm}
                 className="p-1 hover:bg-akaroa-100/70 backdrop-blur-[5px] rounded-lg transition-all duration-200 shadow-glass-button-sm"
               >
