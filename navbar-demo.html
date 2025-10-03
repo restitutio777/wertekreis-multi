@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Navigation Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'rhino': {
+                            DEFAULT: '#273F5B',
+                            700: '#4A5A7A',
+                            800: '#3F4D65',
+                            900: '#273F5B',
+                        },
+                        'cream': '#FEFCF8',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .active-scale:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Demo Container -->
+    <div class="max-w-md mx-auto bg-white shadow-lg">
+        <!-- Beautiful Navigation Header -->
+        <div class="bg-gradient-to-r from-rhino-900 to-rhino-800 backdrop-blur-md shadow-xl border-b border-rhino-700 relative z-10">
+            <div class="max-w-md mx-auto px-6 py-5">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <!-- Desktop Home Button -->
+                        <button class="p-2 hover:bg-rhino-700 rounded-lg transition-colors duration-200 active-scale lg:flex hidden" title="Zurück zur Startseite">
+                            <i data-lucide="home" class="w-5 h-5 text-white"></i>
+                        </button>
+                        
+                        <!-- Main Title -->
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="users" class="w-6 h-6 text-white"></i>
+                            <h1 class="text-2xl font-medium text-white tracking-wide">Menschen entdecken</h1>
+                        </div>
+                    </div>
+                    
+                    <!-- Filter Button -->
+                    <button class="p-2 rounded-lg transition-all duration-200 bg-white/10 text-white hover:bg-white/30 active-scale">
+                        <i data-lucide="sliders-horizontal" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Demo Content -->
+        <div class="p-6 space-y-4">
+            <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-200">
+                <h2 class="text-xl font-semibold text-gray-800 mb-3">✨ New Navigation Features</h2>
+                <ul class="space-y-2 text-gray-700">
+                    <li class="flex items-center space-x-2">
+                        <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+                        <span><strong>Modern Gradient:</strong> Subtle depth with gradient background</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
+                        <span><strong>Enhanced Typography:</strong> Larger, medium-weight text with better spacing</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        <span><strong>Interactive Effects:</strong> Smooth hover states and press animations</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <span class="w-2 h-2 bg-orange-500 rounded-full"></span>
+                        <span><strong>Professional Shadow:</strong> Enhanced depth with stronger shadow</span>
+                    </li>
+                    <li class="flex items-center space-x-2">
+                        <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                        <span><strong>Responsive Design:</strong> Optimized for all screen sizes</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="bg-gray-50 rounded-lg p-4">
+                <h3 class="font-medium text-gray-800 mb-2">🎨 Design Improvements</h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                    The navigation now features a contemporary design with smooth transitions, 
+                    better visual hierarchy, and enhanced user interaction feedback. 
+                    The gradient background adds subtle depth while maintaining excellent readability.
+                </p>
+            </div>
+            
+            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                <h3 class="font-medium text-green-800 mb-2">✅ Try These Interactions</h3>
+                <ul class="text-sm text-green-700 space-y-1">
+                    <li>• Hover over the home button (desktop only)</li>
+                    <li>• Hover over the filter button</li>
+                    <li>• Click and hold buttons to see the press effect</li>
+                    <li>• Notice the smooth color transitions</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Add some interactive demo functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Create a ripple effect
+                    const ripple = document.createElement('div');
+                    ripple.className = 'absolute inset-0 bg-white/20 rounded-lg opacity-0 pointer-events-none';
+                    ripple.style.animation = 'ping 0.3s ease-out';
+                    
+                    this.style.position = 'relative';
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 300);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

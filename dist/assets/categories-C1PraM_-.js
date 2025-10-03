@@ -1,0 +1,1 @@
+const t=["categories.innerWork","categories.spiritualPaths","categories.natureConnection","categories.artExpression","categories.philosophy","categories.community","categories.culturalChange","categories.events"],s=e=>t.includes(e);export{t as A,s as i};
